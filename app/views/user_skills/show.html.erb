@@ -1,0 +1,29 @@
+<h2>Assign skills for User :
+  <%= link_to @user.name, user_path(@user)%>
+</h2>
+<%= form_for :user, url: user_user_skills_path,
+          method: :patch do |f| %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Selected</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @skills.each do |skill| %>
+  <tr>
+    <th scope="row"><%=skill.id%></th> 
+    <td class="active">
+      <%= link_to skill.name, skill_path(skill)%>
+    </td>
+    <td>
+    <%= f.check_box "skill_ids", {multiple: :true}, skill.id%>
+  </tr>
+  <% end %> 
+  </tbody>
+</table>
+<button type="submit" class="btn btn-default">Save
+</button>
+<% end %>

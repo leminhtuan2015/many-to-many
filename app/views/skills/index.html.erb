@@ -1,0 +1,19 @@
+<%= link_to "New skill", new_skill_path%>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @skills.each do |skill| %>
+      <tr>
+        <th scope="row"><%= skill.id %></th>
+          <td><%= link_to skill.name, skill_path(skill) %>
+          </td>
+      </tr>
+    <% end %> 
+  </tbody>
+</table>
